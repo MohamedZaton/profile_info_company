@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xFF275B83);
+const kPrimaryColor = Color(0xFF005277);
 const KLogCardColor = Color(0xFFE3E6EC);
 const KDropBoxTwoShadowColor = Color(0xFFD1D9E6);
 const kStartCyanColor = Color(0xFF17b1f5);
@@ -34,9 +34,10 @@ const kLabelTextStyle = TextStyle(
 );
 
 enum ScreensTab {
-  contact,
   home,
+  log ,
   account,
+  location,
 }
 
 final kHintTextStyle = TextStyle(

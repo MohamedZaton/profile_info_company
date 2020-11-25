@@ -17,14 +17,11 @@ class Subhead extends StatelessWidget {
         children: <Widget>[
           Text(
             title,
-            style:TextStyle(color:kSubHeadColor ,fontWeight: FontWeight.bold),
+            style:TextStyle(color:kPrimaryColor ,fontWeight: FontWeight.bold),
           ),
           GestureDetector(
             onTap: onTap,
-            child: Text(
-              'See All',
-                style:TextStyle(color:kSeeMoreColor ,fontWeight: FontWeight.bold),
-            ),
+            child: Icon(Icons.arrow_forward , color: kStartCyanColor,)
           ),
         ],
       ),

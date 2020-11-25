@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:profileapp/animation_components/side_animation.dart';
 import 'package:profileapp/components/icon_content.dart';
 import 'package:profileapp/components/partner_card.dart';
@@ -31,12 +32,14 @@ class _CompanyState extends State<Company> {
 
   @override
   Widget build(BuildContext context) {
-    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 200), curve: Curves.easeOut);
+//    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 200), curve: Curves.easeOut);
 
     return Container(
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
+          SwiperIntro(context),
+
           SizedBox(height: 5.0),
           SideInAnimation(
             2,
@@ -45,8 +48,9 @@ class _CompanyState extends State<Company> {
               onTap: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: MangeIT.mangeIT,sectionName:kSectionName.its)),
-              );},
+                MaterialPageRoute(builder: (context) => SeeGridView(items: MangeIT.mangeITs,sectionName:kSectionName.its)),
+              );
+                },
             ),
           ),
           SizedBox(height: 5.0),
@@ -55,9 +59,9 @@ class _CompanyState extends State<Company> {
             color: Colors.white,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: MangeIT.mangeIT.length,
+              itemCount: MangeIT.mangeITs.length,
               itemBuilder: (BuildContext context, int index) {
-                MangeIT manageIT = MangeIT.mangeIT[index];
+                MangeIT manageIT = MangeIT.mangeITs[index];
                 return GestureDetector(
                   child: Container(
                     margin: EdgeInsets.all(10.0),
@@ -235,5 +239,38 @@ class _CompanyState extends State<Company> {
     );
   }
 
+  Container SwiperIntro(BuildContext context) {
+    return Container(
+      height: 200.0,
+      child: Swiper(
+        itemCount: MangeIT.mangeITs.length,
+        scrollDirection: Axis.horizontal,
+        autoplay: true,
+        autoplayDelay: 5000,
+        pagination: SwiperPagination(
+          alignment: Alignment.bottomCenter,
+          builder: DotSwiperPaginationBuilder(
+            activeColor:kStartCyanColor,
+            color: kBackGroundColor,
+          ),
+        ),
+        itemBuilder: (context, index) {
+          var mangeIT = MangeIT.mangeITs[index];
+          return GestureDetector(
+            onTap: () {
+
+            },
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(1.0),
+              child: Image.asset(
+                mangeIT.imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
 
 }

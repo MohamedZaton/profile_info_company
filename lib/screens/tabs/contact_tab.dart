@@ -5,12 +5,12 @@ import 'package:profileapp/constants.dart';
 import 'package:profileapp/screens/details/details_page.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
-class ContactTab extends StatefulWidget {
+class LocationTab extends StatefulWidget {
   @override
-  _ContactTabState createState() => _ContactTabState();
+  _LocationTabState createState() => _LocationTabState();
 }
 
-class _ContactTabState  extends State<ContactTab> {
+class _LocationTabState  extends State<LocationTab> {
 
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> markers = Set();
