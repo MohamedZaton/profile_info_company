@@ -10,14 +10,12 @@ class IconContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
-
       children: <Widget>[
-
         Text(
           label,
           textAlign: TextAlign.center,
           style: kLabelTextStyle,
-        )
+        ) ,
       ],
     );
   }

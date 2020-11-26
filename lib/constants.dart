@@ -30,7 +30,7 @@ const kServicesDetailsStyle = TextStyle(
 
 const kLabelTextStyle = TextStyle(
   fontSize: 15.0,
-  color: Colors.white,
+  color: kStartCyanColor,
 );
 
 enum ScreensTab {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:profileapp/animation_components/side_animation.dart';
 import 'package:profileapp/components/icon_content.dart';
+import 'package:profileapp/components/mange_it_card.dart';
 import 'package:profileapp/components/partner_card.dart';
 import 'package:profileapp/components/popup_img_widget.dart';
 import 'package:profileapp/components/reusable_card.dart';
@@ -55,41 +56,14 @@ class _CompanyState extends State<Company> {
           ),
           SizedBox(height: 5.0),
           Container(
-            height: 90.0,
-            color: Colors.white,
+            height: 120.0,
+            color: kBackGroundColor,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: MangeIT.mangeITs.length,
               itemBuilder: (BuildContext context, int index) {
                 MangeIT manageIT = MangeIT.mangeITs[index];
-                return GestureDetector(
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    width: 200.0,
-                    child: Stack(
-                      children: <Widget>[
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(30.0),
-                          child: Image(
-                            image: AssetImage(manageIT.imageUrl),
-                            width: 200.0,
-                            height: 70.0,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => DetailsWebView(
-                                webURL: manageIT.webUrl,
-                          )),
-                    );
-                  },
-                );
+                return ManageItCard(title: manageIT.title,imageUrl: manageIT.imageUrl,webUrl: manageIT.webUrl,);
               },
             ),
           ),

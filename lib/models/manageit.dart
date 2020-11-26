@@ -9,7 +9,7 @@ class MangeIT {
       title: "Consultation Assessment",
       imageUrl: 'images/it/consultation_assessment.jpg',
       webUrl: "https://www.pclink.com.eg/consultation-assessment/",
-    ),
+     ),
     MangeIT(
       title: "Customization Integration",
       imageUrl: 'images/it/customization_integration.jpg',
@@ -26,9 +26,9 @@ class MangeIT {
       webUrl: "https://www.pclink.com.eg/installation-implementation/",
     ),
     MangeIT(
-      title: "Solutions Engineering",
-      imageUrl: 'images/it/solutions_engineering.jpg',
-      webUrl: "https://www.pclink.com.eg/solution-engineering/",
+      title:"Solutions Engineering",
+      imageUrl:'images/it/solutions_engineering.jpg',
+      webUrl:"https://www.pclink.com.eg/solution-engineering/",
     ),
     MangeIT(
       title: "Support Services",

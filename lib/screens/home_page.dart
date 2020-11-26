@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
   int _currentTab = 0;
   static String number  = "2001066279092" ;
   var whatsappUrl = "whatsapp://send?phone="+number;
+  var messangerUrl = "fb.me/page/67326870319";
   String messageNoWhatsapp = "There is no WhatsApp installed" ;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -94,7 +95,7 @@ class _HomePageState extends State<HomePage> {
     ),
     ),
         onPressed: () async {
-                await canLaunch(whatsappUrl) != null ? launch(whatsappUrl) : _displaySnackBar(context ,messageNoWhatsapp );
+                await canLaunch(messangerUrl) != null ? launch(messangerUrl) : _displaySnackBar(context ,messageNoWhatsapp );
 
           }
           ),

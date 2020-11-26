@@ -10,17 +10,14 @@ class ReusableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPress,
-      child: Container(
-        width: 100.0,
-        child: cardChild,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0),
-            gradient: LinearGradient(
-                begin: Alignment.centerLeft,
-                end: Alignment.centerRight,
-                colors: [kStartCyanColor, kEndCyanColor])),
+    return ButtonTheme(
+      buttonColor: Colors.white,
+      minWidth: 100,
+      height:40 ,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      child: RaisedButton(
+        onPressed: onPress,
+        child:cardChild,
       ),
     );
   }
