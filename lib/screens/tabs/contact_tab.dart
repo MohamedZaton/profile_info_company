@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:profileapp/constants.dart';
-import 'package:profileapp/screens/details/details_page.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class LocationTab extends StatefulWidget {

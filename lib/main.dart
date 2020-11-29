@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:profileapp/constants.dart';
-import 'package:profileapp/screens/details/details_page.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
 import 'package:profileapp/screens/home_page.dart';
 import 'package:profileapp/screens/splash/welcome_page.dart';
 

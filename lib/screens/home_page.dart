@@ -6,6 +6,7 @@ import 'package:profileapp/screens/tabs/contact_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
+import 'details/web_view_page.dart';
 
 class HomePage extends StatefulWidget {
   static String id = "HomePage";
@@ -17,14 +18,16 @@ class _HomePageState extends State<HomePage> {
   int _currentTab = 0;
   static String number  = "2001066279092" ;
   var whatsappUrl = "whatsapp://send?phone="+number;
-  var messangerUrl = "fb.me/page/67326870319";
+  var messangerUrl = "http://m.me/67326870319";
   String messageNoWhatsapp = "There is no WhatsApp installed" ;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _scaffoldBodyKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
+
       appBar: AppBar(
         backgroundColor: Colors.white,
           centerTitle: true,
@@ -52,8 +55,13 @@ class _HomePageState extends State<HomePage> {
 
                 ],
               ),
-            onTap: () {
-              print("click menu right ");
+            onTap:(){
+              print("Click Menu Right");
+              if (_scaffoldBodyKey.currentState.isDrawerOpen == false) {
+                _scaffoldBodyKey.currentState.openDrawer();
+              } else {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+              }
             },
           ),
         ), // menu right
@@ -71,42 +79,70 @@ class _HomePageState extends State<HomePage> {
       child: GestureDetector(
       child: Wrap(
       children: [
-        ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-        child: Container(
-          padding: EdgeInsets.all(7),
-          child: SvgPicture.asset("images/icons/chat_dots.svg", width: 18.0, height: 18.0,),
-          decoration: BoxDecoration(
-              color: kBackGroundColor,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 5),
-                )
-              ]
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                    child: Container(
+                      padding: EdgeInsets.all(7),
+                      child: SvgPicture.asset("images/icons/chat_dots.svg", width: 18.0, height: 18.0,),
+                      decoration: BoxDecoration(
+                          color: kBackGroundColor,
+                          boxShadow: [
+                            BoxShadow(
+                              offset: Offset(0, 5),
+                            )
+                          ]
+                      ),
+                    ),
+                  ),
+
+                ],
           ),
-        ),
-      ),
+          onTap: () async {
+          print("click menu right ");
+          await canLaunch(messangerUrl) != null ? launch(messangerUrl) : _displaySnackBar(context ,messageNoWhatsapp );
 
-    ],
-    ),
-    onTap: () {
-    print("click menu right ");
-    },
+          },
     ),
     ),
-        onPressed: () async {
-                await canLaunch(messangerUrl) != null ? launch(messangerUrl) : _displaySnackBar(context ,messageNoWhatsapp );
 
-          }
           ),
 
         ],
       ),
-      body: Container(
-          decoration: BoxDecoration(
-            color: kBackGroundColor ,
+      body: Scaffold(
+        key: _scaffoldBodyKey,
+        drawer: Drawer(
+          child:
+          ListView(
+
+            children: [
+            SizedBox(height: 30,),
+              ListTile(title: Text("Why PcLink "),onTap:()
+                {
+                  _scaffoldBodyKey.currentState.openEndDrawer();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kAboutPcLinkLink,)),
+                  );
+                },),
+              ListTile(title: Text("Contact Us "),onTap:()
+              {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kContactusLink,)),
+                );
+              },),
+            ],
           ),
-          child: selectTab(ScreensTab.values[_currentTab])),
+        ),
+
+        body: Container(
+            decoration: BoxDecoration(
+              color: kBackGroundColor ,
+            ),
+            child: selectTab(ScreensTab.values[_currentTab])),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         showSelectedLabels: true,

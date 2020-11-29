@@ -77,3 +77,4 @@ const List<Color> kGoldColorList = [
 const List<Color> kPremierColorList = [Color(0XFF026B9A), Color(0XFF3BBCE9)];
 
 const String kContactusLink = "https://www.pclink.com.eg/contact-us/";
+const String kAboutPcLinkLink = "https://www.pclink.com.eg/about/";

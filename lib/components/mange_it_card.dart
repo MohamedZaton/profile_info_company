@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:profileapp/constants.dart';
-import 'package:profileapp/screens/details/details_page.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
 
 class ManageItCard extends StatelessWidget {
   String imageUrl ;

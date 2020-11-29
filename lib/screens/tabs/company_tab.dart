@@ -7,12 +7,14 @@ import 'package:profileapp/components/partner_card.dart';
 import 'package:profileapp/components/popup_img_widget.dart';
 import 'package:profileapp/components/reusable_card.dart';
 import 'package:profileapp/components/sub_head_widget.dart';
+import 'package:profileapp/components/swiper_intro.dart';
 import 'package:profileapp/models/partner.dart';
 import 'package:profileapp/models/portfolio.dart';
 import 'package:profileapp/models/service.dart';
 import 'package:profileapp/models/manageit.dart';
-import 'package:profileapp/screens/details/details_page.dart';
-import 'package:profileapp/screens/gridpages/see_grid_view_screen.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/see_grid_view_screen.dart';
+import 'package:profileapp/utils/screens.dart';
 import '../../constants.dart';
 
 class Company extends StatefulWidget {
@@ -39,8 +41,58 @@ class _CompanyState extends State<Company> {
       child: ListView(
         shrinkWrap: true,
         children: <Widget>[
-          SwiperIntro(context),
+          SwiperIntro(),
+          SizedBox(height: 5.0),
+          SideInAnimation(
+            2,
+            child: Subhead(
+              title: 'Business Solutions',
+              onTap: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SeeGridView(items: Service.services,sectionName:kSectionName.solutions)),
+              );},
+            ),
+          ),
+          SizedBox(height: 5.0),
+          SideInAnimation(
+            2,
+            child: Container(
+              height: ScreenMobile.heigth(context)*0.10,
+              color: kBackGroundColor,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: Service.services.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Service service = Service.services[index];
+                  return Container(
+                    margin: EdgeInsets.all(8.0),
 
+                    child: Stack(
+                      children: <Widget>[
+                        ReusableCard(
+                          cardChild: IconContent(
+                            label: service.title,
+                          ),
+                          onPress: () {
+                            print("Solutions onPress : "+ service.webUrl);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => DetailsWebView(
+                                  webURL: service.webUrl,
+                                ),
+                              ),
+                            );
+                          },
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
           SizedBox(height: 5.0),
           SideInAnimation(
             2,
@@ -67,55 +119,7 @@ class _CompanyState extends State<Company> {
               },
             ),
           ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Subhead(
-              title: 'Business Solutions',
-              onTap: () {   Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: Service.services,sectionName:kSectionName.solutions)),
-              );},
-            ),
-          ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Container(
-              height: 80.0,
-              color: kBackGroundColor,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: Service.services.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Service service = Service.services[index];
-                  return Container(
-                    margin: EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: <Widget>[
-                        ReusableCard(
-                          cardChild: IconContent(
-                            label: service.title,
-                          ),
-                          onPress: () {
-                            print("Solutions onPress : "+ service.webUrl);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => DetailsWebView(
-                                    webURL: service.webUrl,
-                                  ),
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
+
           SizedBox(height: 5.0),
           SideInAnimation(
             2,
@@ -171,9 +175,7 @@ class _CompanyState extends State<Company> {
                       onTap: () async {
                         await showDialog(
                             context: context,
-                            builder: (_) => ImageDialog(
-                                  productUrl: portfolio.popImgUrl,
-                                ));
+                            builder: (_) => ImageDialog(productUrl: portfolio.popImgUrl,),);
                         print("image click " + portfolio.popImgUrl);
                       },
                     );
@@ -196,7 +198,6 @@ class _CompanyState extends State<Company> {
           SizedBox(height: 5.0),
           Container(
             height: 100.0,
-            color: Colors.white,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: Partner.partners.length,
@@ -213,38 +214,5 @@ class _CompanyState extends State<Company> {
     );
   }
 
-  Container SwiperIntro(BuildContext context) {
-    return Container(
-      height: 200.0,
-      child: Swiper(
-        itemCount: MangeIT.mangeITs.length,
-        scrollDirection: Axis.horizontal,
-        autoplay: true,
-        autoplayDelay: 5000,
-        pagination: SwiperPagination(
-          alignment: Alignment.bottomCenter,
-          builder: DotSwiperPaginationBuilder(
-            activeColor:kStartCyanColor,
-            color: kBackGroundColor,
-          ),
-        ),
-        itemBuilder: (context, index) {
-          var mangeIT = MangeIT.mangeITs[index];
-          return GestureDetector(
-            onTap: () {
-
-            },
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(1.0),
-              child: Image.asset(
-                mangeIT.imageUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
 
 }

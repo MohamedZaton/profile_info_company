@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:profileapp/constants.dart';
-import 'package:profileapp/screens/details/details_page.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
 
 class AccountTab extends StatefulWidget {
   @override

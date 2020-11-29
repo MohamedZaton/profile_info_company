@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:profileapp/models/partner.dart';
-import 'package:profileapp/screens/details/details_page.dart';
+import 'package:profileapp/screens/details/web_view_page.dart';
 
 class PartnerCard extends StatelessWidget {
   PartnerCard({  Key key ,@required this.partner}) : super(key: key);
