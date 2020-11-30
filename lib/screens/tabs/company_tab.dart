@@ -13,6 +13,7 @@ import 'package:profileapp/models/portfolio.dart';
 import 'package:profileapp/models/service.dart';
 import 'package:profileapp/models/manageit.dart';
 import 'package:profileapp/screens/details/web_view_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/portfolio_detail.dart';
 import 'package:profileapp/screens/gridpages/subpages/see_grid_view_screen.dart';
 import 'package:profileapp/utils/screens.dart';
 import '../../constants.dart';
@@ -26,12 +27,7 @@ class _CompanyState extends State<Company> {
   ScrollController _scrollController = ScrollController();
 
   @override
-  void initState() {
-
-  }
-
-
-
+  void initState() {}
 
   @override
   Widget build(BuildContext context) {
@@ -49,16 +45,20 @@ class _CompanyState extends State<Company> {
               title: 'Business Solutions',
               onTap: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: Service.services,sectionName:kSectionName.solutions)),
-              );},
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                          items: Service.services,
+                          sectionName: kSectionName.solutions)),
+                );
+              },
             ),
           ),
           SizedBox(height: 5.0),
           SideInAnimation(
             2,
             child: Container(
-              height: ScreenMobile.heigth(context)*0.10,
+              height: ScreenMobile.heigth(context) * 0.10,
               color: kBackGroundColor,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -67,7 +67,6 @@ class _CompanyState extends State<Company> {
                   Service service = Service.services[index];
                   return Container(
                     margin: EdgeInsets.all(8.0),
-
                     child: Stack(
                       children: <Widget>[
                         ReusableCard(
@@ -75,7 +74,7 @@ class _CompanyState extends State<Company> {
                             label: service.title,
                           ),
                           onPress: () {
-                            print("Solutions onPress : "+ service.webUrl);
+                            print("Solutions onPress : " + service.webUrl);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -100,10 +99,13 @@ class _CompanyState extends State<Company> {
               title: 'Manage Your IT',
               onTap: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: MangeIT.mangeITs,sectionName:kSectionName.its)),
-              );
-                },
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                          items: MangeIT.mangeITs,
+                          sectionName: kSectionName.its)),
+                );
+              },
             ),
           ),
           SizedBox(height: 5.0),
@@ -115,11 +117,14 @@ class _CompanyState extends State<Company> {
               itemCount: MangeIT.mangeITs.length,
               itemBuilder: (BuildContext context, int index) {
                 MangeIT manageIT = MangeIT.mangeITs[index];
-                return ManageItCard(title: manageIT.title,imageUrl: manageIT.imageUrl,webUrl: manageIT.webUrl,);
+                return ManageItCard(
+                  title: manageIT.title,
+                  imageUrl: manageIT.imageUrl,
+                  webUrl: manageIT.webUrl,
+                );
               },
             ),
           ),
-
           SizedBox(height: 5.0),
           SideInAnimation(
             2,
@@ -127,9 +132,13 @@ class _CompanyState extends State<Company> {
               title: 'Portfolio',
               onTap: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: Portfolio.portfolios,sectionName:kSectionName.portfolios)),
-              );},
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                          items: Portfolio.portfolios,
+                          sectionName: kSectionName.portfolios)),
+                );
+              },
             ),
           ),
           SizedBox(height: 5.0),
@@ -162,21 +171,28 @@ class _CompanyState extends State<Company> {
                           children: <Widget>[
                             ClipRRect(
                               borderRadius: BorderRadius.circular(5.0),
-                              child: Image(
-                                image: AssetImage(portfolio.imageUrl),
-                                width: 300.0,
-                                height: 210.0,
-                                fit: BoxFit.cover,
+                              child: Hero(
+                                tag: '${portfolio.id}',
+                                child: Image(
+                                  image: AssetImage(portfolio.imageUrl),
+                                  width: 300.0,
+                                  height: 210.0,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      onTap: () async {
-                        await showDialog(
-                            context: context,
-                            builder: (_) => ImageDialog(productUrl: portfolio.popImgUrl,),);
-                        print("image click " + portfolio.popImgUrl);
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PortfolioDetailsPage(
+                              portfolio: portfolio,
+                            ),
+                          ),
+                        );
                       },
                     );
                   },
@@ -189,10 +205,15 @@ class _CompanyState extends State<Company> {
             2,
             child: Subhead(
               title: 'Our Partners',
-              onTap: () { Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SeeGridView(items: Partner.partners,sectionName:kSectionName.partners)),
-              );},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                          items: Partner.partners,
+                          sectionName: kSectionName.partners)),
+                );
+              },
             ),
           ),
           SizedBox(height: 5.0),
@@ -213,6 +234,4 @@ class _CompanyState extends State<Company> {
       ),
     );
   }
-
-
 }
