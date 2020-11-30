@@ -48,7 +48,8 @@ class _CompanyState extends State<Company> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => SeeGridView(
-                          items: Service.services,
+                          title: 'Business Solutions',
+                          items: BusinessService.businessServices,
                           sectionName: kSectionName.solutions)),
                 );
               },
@@ -62,9 +63,9 @@ class _CompanyState extends State<Company> {
               color: kBackGroundColor,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: Service.services.length,
+                itemCount: BusinessService.businessServices.length,
                 itemBuilder: (BuildContext context, int index) {
-                  Service service = Service.services[index];
+                  BusinessService service = BusinessService.businessServices[index];
                   return Container(
                     margin: EdgeInsets.all(8.0),
                     child: Stack(
@@ -103,7 +104,7 @@ class _CompanyState extends State<Company> {
                   MaterialPageRoute(
                       builder: (context) => SeeGridView(
                           items: MangeIT.mangeITs,
-                          sectionName: kSectionName.its)),
+                          sectionName: kSectionName.its, title:"Manage Your IT",),),
                 );
               },
             ),
@@ -136,7 +137,7 @@ class _CompanyState extends State<Company> {
                   MaterialPageRoute(
                       builder: (context) => SeeGridView(
                           items: Portfolio.portfolios,
-                          sectionName: kSectionName.portfolios)),
+                          sectionName: kSectionName.portfolios,title: 'Portfolio',)),
                 );
               },
             ),
@@ -206,12 +207,11 @@ class _CompanyState extends State<Company> {
             child: Subhead(
               title: 'Our Partners',
               onTap: () {
-                Navigator.push(
-                  context,
+                Navigator.push(context,
                   MaterialPageRoute(
                       builder: (context) => SeeGridView(
                           items: Partner.partners,
-                          sectionName: kSectionName.partners)),
+                          sectionName: kSectionName.partners,  title: 'Our Partners',)),
                 );
               },
             ),

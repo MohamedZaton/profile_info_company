@@ -13,34 +13,53 @@ class SolutionGridCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      child: Stack(
-        children: <Widget>[
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                MaterialPageRoute(
-                    builder: (context) => DetailsWebView(
-                      webURL: item.webUrl,
-                    )),) ;
-            },
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              child: IconContent(
-                label: item.title,
+    return GestureDetector(
+      child: Container(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(3.0),
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(kStartCyanColor.withOpacity(0.6), BlendMode.modulate),
+                  child: Image(
+                    image: AssetImage(item.imageUrl),
+                    fit: BoxFit.fill,
+                  ),
+                ),
               ),
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5.0),
-                  gradient: LinearGradient(
-                      begin: Alignment.centerLeft,
-                      end: Alignment.centerRight,
-                      colors: [kStartCyanColor, kEndCyanColor])),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    offset: Offset(0.0, 2.0),
+                    blurRadius: 6.0,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+            Positioned.fill(
+              bottom: 5.0,
+              left: 5.0,
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(item.title,style: TextStyle(color: Colors.white ,fontSize: 12),),
+              ),
+            )
+          ],
+        ),
       ),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => DetailsWebView(
+                webURL: item.webUrl,
+              )),
+        );
+      },
     );
   }
 }

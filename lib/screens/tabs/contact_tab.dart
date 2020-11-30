@@ -11,7 +11,6 @@ class LocationTab extends StatefulWidget {
 }
 
 class _LocationTabState  extends State<LocationTab> {
-
   Completer<GoogleMapController> _controller = Completer();
   Set<Marker> markers = Set();
   static final CameraPosition _kPcLinkLocation = CameraPosition(
@@ -54,12 +53,11 @@ class _LocationTabState  extends State<LocationTab> {
 
                        },
                        leading: Icon(Icons.location_pin,color: kStartCyanColor,) ,
-                       title: Text('49 Mostafa Kamel St.، SEMOUHA، Sidi Gaber, Alexandria Governorate',
+                       title: Text('49 Mostafa Kamel St.،SEMOUHA، Sidi Gaber, Alexandria Governorate',
                            style: Theme.of(context)
                                .textTheme
                                .bodyText2
                                .copyWith(fontSize: 14.0)),
-
                      ),
                      ListTile(
                        onTap: () {
@@ -71,13 +69,12 @@ class _LocationTabState  extends State<LocationTab> {
                                .textTheme
                                .bodyText2
                                .copyWith(fontSize: 14.0)),
-
                      ),
                      ListTile(
                        onTap: () {
 
                        },
-                       leading: SizedBox(width: 10,) ,
+                       leading: Icon(Icons.print_rounded,color: kStartCyanColor,) ,
                        title: Text('+2034040102',
                            style: Theme.of(context)
                                .textTheme
@@ -87,7 +84,6 @@ class _LocationTabState  extends State<LocationTab> {
                      ),
                      ListTile(
                        onTap: () {
-
                        },
                        leading: Icon(Icons.email,color: kStartCyanColor,) ,
                        title: Text('info@pclink.com.eg',
@@ -105,19 +101,20 @@ class _LocationTabState  extends State<LocationTab> {
                      ),
                      ListTile(
                        onTap: () {
+
                        },
-                         leading: SizedBox(width: 1,) ,
+                         leading: SizedBox(width: 1,),
                        title:  OutlineButton(
-                           child: new Text("Contact us "),
+                           child: new Text("Contact us"),
                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),),
                          borderSide: BorderSide(color: Colors.blue),
                          onPressed: () {  Navigator.push(
                            context,
                            MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kContactusLink,)),
-                         ); },
+                         );
+                         },
                        )
                      ),
-
                   ],
                 ),
                ),
@@ -128,6 +125,4 @@ class _LocationTabState  extends State<LocationTab> {
       ),
     );
   }
-
-
 }

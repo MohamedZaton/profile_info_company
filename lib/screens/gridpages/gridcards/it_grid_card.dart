@@ -19,12 +19,9 @@ class ItGridCard extends StatelessWidget {
             Container(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(3.0),
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(kStartCyanColor.withOpacity(0.6), BlendMode.modulate),
-                  child: Image(
-                    image: AssetImage(item.imageUrl),
-                    fit: BoxFit.cover,
-                  ),
+                child: Image(
+                  image: AssetImage(item.imageUrl),
+                  fit: BoxFit.cover,
                 ),
               ),
               decoration: BoxDecoration(
@@ -44,7 +41,7 @@ class ItGridCard extends StatelessWidget {
               left: 5.0,
               child: Align(
                 alignment: Alignment.bottomLeft,
-                child: Text(item.title,style: TextStyle(color: Colors.white , fontWeight: FontWeight.bold),),
+                child: Text(item.title,style: TextStyle(color: Colors.white ,fontSize: 12),),
               ),
             )
           ],

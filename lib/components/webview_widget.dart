@@ -18,34 +18,36 @@ class CustomWebViewWidget extends StatelessWidget {
     print("click_web_view : "+ webURL ) ;
     Size size = MediaQuery.of(context).size;
     if (isConnectWeb) {
-      return WebviewScaffold(
-        appBar: isAppBar
-            ? AppBar(
-                backgroundColor: Colors.white,
-                leading: IconButton(
-                  icon: Icon(Icons.arrow_back, color: kPrimaryColor),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
-                title: Container(
-                  child: Image(
-                    image: AssetImage("images/icons/pclink_logo_name.png"),
-                    width: 50.0,
-                    height: 50.0,
+      return Scaffold(
+
+        body: WebviewScaffold(
+          appBar: isAppBar
+              ? AppBar(
+
+                  backgroundColor: Colors.white,
+                  leading: IconButton(
+                    icon: Icon(Icons.arrow_back, color: kPrimaryColor),
+                    onPressed: () => Navigator.of(context).pop(),
                   ),
-                ),
-                centerTitle: true,
-              )
-            : AppBar(
-                backgroundColor: Colors.white,
-              ),
-        ignoreSSLErrors: true,
-        url: webURL,
-        initialChild: Container(
-          color: kBackGroundColor,
-          child: Center(
-              child: SpinKitCubeGrid(
-            color: kPrimaryColor,
-          )),
+                  title: Container(
+                    child: Image(
+                      image: AssetImage("images/icons/pclink_logo_name.png"),
+                      width: 50.0,
+                      height: 50.0,
+                    ),
+                  ),
+                  centerTitle: true,
+                )
+              : PreferredSize(preferredSize: Size(0.0, 0.0),child: Container(),),
+          ignoreSSLErrors: true,
+          url: webURL,
+          initialChild: Container(
+            color: kBackGroundColor,
+            child: Center(
+                child: SpinKitCubeGrid(
+              color: kPrimaryColor,
+            )),
+          ),
         ),
       );
     } else {

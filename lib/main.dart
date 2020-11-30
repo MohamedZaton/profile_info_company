@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: kPrimaryColor),
       ),
       home: WelcomePage(),
       initialRoute: WelcomePage.id,

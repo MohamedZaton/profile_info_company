@@ -11,9 +11,11 @@ class AccountTab extends StatefulWidget {
 class _AccountTabState extends State<AccountTab> {
   @override
   Widget build(BuildContext context) {
-    return DetailsWebView(
-      webURL: "https://www.pclink.com.eg:8444/Home",
-      isAppBar: false,
+    return Scaffold(
+      body: DetailsWebView(
+        webURL: "https://www.pclink.com.eg:8444/Home",
+        isAppBar: false,
+      ),
     );
   }
 }

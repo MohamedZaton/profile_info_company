@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:profileapp/screens/tabs/account_tab.dart';
 import 'package:profileapp/screens/tabs/company_tab.dart';
 import 'package:profileapp/screens/tabs/contact_tab.dart';
+import 'package:profileapp/screens/tabs/log_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../constants.dart';
@@ -199,6 +200,8 @@ class _HomePageState extends State<HomePage> {
     }
     else if (name == ScreensTab.account) {
     return AccountTab() ;
+    } else if (name == ScreensTab.log) {
+    return LogNotificationTab() ;
     }
     return Company();
   }

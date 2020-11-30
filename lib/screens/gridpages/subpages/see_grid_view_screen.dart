@@ -12,8 +12,9 @@ import '../gridcards/solution_grid_card.dart';
 class SeeGridView extends StatelessWidget {
   List<dynamic> items;
   kSectionName sectionName;
+  String title;
 
-  SeeGridView({this.items, this.sectionName});
+  SeeGridView({@required this.title ,this.items, this.sectionName});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +22,24 @@ class SeeGridView extends StatelessWidget {
       backgroundColor: kBackGroundColor,
       appBar: AppBar(
         elevation: 0.0,
+        backgroundColor: Colors.white,
+        iconTheme: IconThemeData(color: kPrimaryColor),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            Container(
+              child:Text('${title}',style: TextStyle(color: kPrimaryColor),)
+            ),
+          ],
+        ),
+
       ),
       body: StaggeredGridView.countBuilder(
         padding: EdgeInsets.only(top: 30, left: 10,right: 10),
         itemCount: items.length,
         crossAxisCount: 4,
-        staggeredTileBuilder: (int index) => staggeredSections(index , sectionName) ,
+        staggeredTileBuilder:(int index) => staggeredSections(index , sectionName),
         mainAxisSpacing: 5.0,
         crossAxisSpacing: 5.0,
         scrollDirection: Axis.vertical,
@@ -85,7 +98,7 @@ StaggeredTile staggeredSections(int index ,kSectionName sectionName) {
       {
         print("solutions staggeredSection ");
 
-        return  StaggeredTile.fit(index==0 ? 5 : 2);
+        return  StaggeredTile.fit(index==0 ? 7 : 2);
       }
       break;
     case kSectionName.portfolios:

@@ -15,33 +15,30 @@ class PortfolioDetailsPage extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading:GestureDetector(
+            child: Container(
+              child: Icon(Icons.arrow_back ,color: kPrimaryColor,),
+            ),
+            onTap: ()
+            {
+              Navigator.pop(context);
+            },
+          ) ,
+        ),
         body: Stack(
           children: <Widget>[
             Container(
               child: Hero(
                 tag: '${portfolio.id}',
-                child: Container(
-                  // the height of this container is 80% of our width
-                  height: size.width * 0.8,
-
-                  child: Stack(
-                    alignment: Alignment.bottomCenter,
-                    children: <Widget>[
-                      Container(
-                        height: size.height * 0.7,
-                        width: size.width,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          shape: BoxShape.circle,
-                        ),
-                      ),
-                      Image.asset(
-                        portfolio.imageUrl,
-                        height: size.width * 0.75,
-                        fit: BoxFit.cover,
-                      ),
-                    ],
-                  ),
+                child:  Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Image.asset(
+                      portfolio.imageUrl,
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -53,74 +50,26 @@ class PortfolioDetailsPage extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      ListTile(
-                          onTap: () {},
-                          title: Icon(
-                            Icons.keyboard_arrow_up,
-                            color: kStartCyanColor,
-                          )), // arrow up
+
                       ListTile(
                         onTap: () {},
-                        leading: Icon(
-                          Icons.location_pin,
-                          color: kStartCyanColor,
-                        ),
+
                         title: Text(
-                            '49 Mostafa Kamel St.، SEMOUHA، Sidi Gaber, Alexandria Governorate',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(fontSize: 14.0)),
+                            '${portfolio.title}',
+                            style: TextStyle(color: kPrimaryColor , fontWeight: FontWeight.bold,fontSize: 16)),
                       ),
                       ListTile(
                         onTap: () {},
-                        leading: Icon(
-                          Icons.call,
-                          color: kStartCyanColor,
-                        ),
-                        title: Text('+2034040101',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(fontSize: 14.0)),
+
+                        title:Text(
+                            '${portfolio.description}',
+                            style: TextStyle(color: kSubHeadColor,fontSize: 12)),
                       ),
-                      ListTile(
-                        onTap: () {},
-                        leading: SizedBox(
-                          width: 10,
-                        ),
-                        title: Text('+2034040102',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(fontSize: 14.0)),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        leading: Icon(
-                          Icons.email,
-                          color: kStartCyanColor,
-                        ),
-                        title: Text('info@pclink.com.eg',
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyText2
-                                .copyWith(fontSize: 14.0)),
-                      ),
-                      ListTile(
-                        onTap: () {},
-                        leading: SizedBox(
-                          width: 10,
-                        ),
-                        title: Divider(color: kStartCyanColor),
-                      ),
+
                       ListTile(
                           onTap: () {},
-                          leading: SizedBox(
-                            width: 1,
-                          ),
-                          title: OutlineButton(
-                            child: new Text("Contact us "),
+                        leading: OutlineButton(
+                            child: new Text(" Contact us "),
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30.0),
                             ),
@@ -129,12 +78,11 @@ class PortfolioDetailsPage extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DetailsWebView(
-                                          webURL: kContactusLink,
-                                        )),
+                                    builder: (context) => DetailsWebView( webURL: kContactusLink,)
+                                ),
                               );
                             },
-                          )),
+                          ),),
                     ],
                   ),
                 ),
