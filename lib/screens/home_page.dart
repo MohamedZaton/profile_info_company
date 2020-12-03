@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:profileapp/models/manageit.dart';
+import 'package:profileapp/models/portfolio.dart';
+import 'package:profileapp/models/service.dart';
 import 'package:profileapp/screens/tabs/account_tab.dart';
 import 'package:profileapp/screens/tabs/company_tab.dart';
 import 'package:profileapp/screens/tabs/contact_tab.dart';
 import 'package:profileapp/screens/tabs/log_tab.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import '../constants.dart';
 import 'details/web_view_page.dart';
+import 'gridpages/subpages/see_grid_view_screen.dart';
 
 class HomePage extends StatefulWidget {
   static String id = "HomePage";
@@ -115,17 +118,51 @@ class _HomePageState extends State<HomePage> {
         drawer: Drawer(
           child:
           ListView(
-
             children: [
             SizedBox(height: 30,),
+
+              ListTile(title: Text("Business Solutions"),onTap:()
+              {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                          title: 'Business Solutions',
+                          items: BusinessService.businessServices,
+                          sectionName: kSectionName.solutions)),
+                );
+              },),
+              ListTile(title: Text("Manage Your IT"),onTap:()
+              {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SeeGridView(
+                      items: MangeIT.mangeITs,
+                      sectionName: kSectionName.its, title:"Manage Your IT",),),
+                );
+              },),
+              ListTile(title: Text("Portfolio"),onTap:()
+              {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SeeGridView(
+                        items: Portfolio.portfolios,
+                        sectionName: kSectionName.portfolios,title: 'Portfolio',)),
+                );
+              },),
               ListTile(title: Text("Why PcLink "),onTap:()
-                {
-                  _scaffoldBodyKey.currentState.openEndDrawer();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kAboutPcLinkLink,)),
-                  );
-                },),
+              {
+                _scaffoldBodyKey.currentState.openEndDrawer();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kAboutPcLinkLink,)),
+                );
+              },),
               ListTile(title: Text("Contact Us "),onTap:()
               {
                 _scaffoldBodyKey.currentState.openEndDrawer();

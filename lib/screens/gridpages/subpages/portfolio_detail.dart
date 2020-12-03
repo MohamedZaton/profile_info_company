@@ -17,15 +17,18 @@ class PortfolioDetailsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          leading:GestureDetector(
-            child: Container(
-              child: Icon(Icons.arrow_back ,color: kPrimaryColor,),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: kPrimaryColor),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          title: Container(
+            child: Image(
+              image: AssetImage("images/icons/pclink_logo_name.png"),
+              width: 50.0,
+              height: 50.0,
             ),
-            onTap: ()
-            {
-              Navigator.pop(context);
-            },
-          ) ,
+          ),
+          centerTitle: true,
         ),
         body: Stack(
           children: <Widget>[
@@ -69,11 +72,12 @@ class PortfolioDetailsPage extends StatelessWidget {
                       ListTile(
                           onTap: () {},
                         leading: OutlineButton(
-                            child: new Text(" Contact us "),
+                            child: new Text(" Contact us " ,style: TextStyle(  color: Colors.blue,),),
                             shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30.0),
                             ),
                             borderSide: BorderSide(color: Colors.blue),
+
                             onPressed: () {
                               Navigator.push(
                                 context,

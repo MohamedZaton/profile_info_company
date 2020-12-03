@@ -105,7 +105,7 @@ class _LocationTabState  extends State<LocationTab> {
                        },
                          leading: SizedBox(width: 1,),
                        title:  OutlineButton(
-                           child: new Text("Contact us"),
+                         child: new Text(" Contact us " ,style: TextStyle(  color: Colors.blue,),),
                            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),),
                          borderSide: BorderSide(color: Colors.blue),
                          onPressed: () {  Navigator.push(
