@@ -17,22 +17,25 @@ class MyApp extends StatelessWidget {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return SafeArea(
-      child: MaterialApp(
-        title: 'PcLink',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primaryColor: kPrimaryColor,
-          scaffoldBackgroundColor: Colors.white,
-          iconTheme: IconThemeData(color: kPrimaryColor),
+    return  MediaQuery(
+      data: MediaQueryData(),
+      child: SafeArea(
+        child: MaterialApp(
+          title: 'PcLink',
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primaryColor: kPrimaryColor,
+            scaffoldBackgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: kPrimaryColor),
+          ),
+          home: WelcomePage(),
+          initialRoute: WelcomePage.id,
+          routes: {
+            HomePage.id: (context) => HomePage(),
+            WelcomePage.id: (context) => WelcomePage(),
+            DetailsWebView.id: (context) => DetailsWebView(),
+          },
         ),
-        home: WelcomePage(),
-        initialRoute: WelcomePage.id,
-        routes: {
-          HomePage.id: (context) => HomePage(),
-          WelcomePage.id: (context) => WelcomePage(),
-          DetailsWebView.id: (context) => DetailsWebView(),
-        },
       ),
     );
   }
