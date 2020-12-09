@@ -54,22 +54,26 @@ class CustomWebViewWidget extends StatelessWidget {
       return Scaffold(
         backgroundColor: Colors.white,
         body: Center(
-          child: Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Image(
-                  image: AssetImage("images/icons/disconnected.png"),
-                  width: 50,
-                  height: 50,
+          child: Column(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Image(
+                      image: AssetImage("images/icons/disconnected.png"),
+                      width: 50,
+                      height: 50,
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Center(child: Text("Connecting network")),
+                  ],
                 ),
-                SizedBox(
-                  width: 15,
-                ),
-                Center(child: Text("Connecting network")),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       );

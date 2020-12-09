@@ -33,204 +33,210 @@ class _CompanyState extends State<Company> {
   Widget build(BuildContext context) {
 //    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: Duration(milliseconds: 200), curve: Curves.easeOut);
 
-    return Container(
-      child: ListView(
-        shrinkWrap: true,
-        children: <Widget>[
-          SwiperIntro(),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Subhead(
-              title: 'Business Solutions',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SeeGridView(
-                          title: 'Business Solutions',
-                          items: BusinessService.businessServices,
-                          sectionName: kSectionName.solutions)),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Container(
-              height: ScreenMobile.heigth(context) * 0.10,
-              color: kBackGroundColor,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: BusinessService.businessServices.length,
-                itemBuilder: (BuildContext context, int index) {
-                  BusinessService service = BusinessService.businessServices[index];
-                  return Container(
-                    margin: EdgeInsets.all(8.0),
-                    child: Stack(
-                      children: <Widget>[
-                        ReusableCard(
-                          cardChild: IconContent(
-                            label: service.title,
-                          ),
-                          onPress: () {
-                            print("Solutions onPress : " + service.webUrl);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailsWebView(
-                                  webURL: service.webUrl,
-                                ),
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
+    return Scaffold(
+      body: Container(
+        child: ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            SwiperIntro(),
+            SizedBox(height: 5.0),
+            SideInAnimation(
+              2,
+              child: Subhead(
+                title: 'Business Solutions',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeeGridView(
+                            title: 'Business Solutions',
+                            items: BusinessService.businessServices,
+                            sectionName: kSectionName.solutions)),
                   );
                 },
               ),
             ),
-          ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Subhead(
-              title: 'Manage Your IT',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SeeGridView(
-                          items: MangeIT.mangeITs,
-                          sectionName: kSectionName.its, title:"Manage Your IT",),),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 5.0),
-          Container(
-            height: 120.0,
-            color: kBackGroundColor,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: MangeIT.mangeITs.length,
-              itemBuilder: (BuildContext context, int index) {
-                MangeIT manageIT = MangeIT.mangeITs[index];
-                return ManageItCard(
-                  title: manageIT.title,
-                  imageUrl: manageIT.imageUrl,
-                  webUrl: manageIT.webUrl,
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Subhead(
-              title: 'Portfolio',
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => SeeGridView(
-                          items: Portfolio.portfolios,
-                          sectionName: kSectionName.portfolios,title: 'Portfolio',)),
-                );
-              },
-            ),
-          ),
-          SizedBox(height: 5.0),
-          Expanded(
-            child: SideInAnimation(
+            SizedBox(height: 5.0),
+            SideInAnimation(
               2,
               child: Container(
-                height: 220.0,
+                height: ScreenMobile.heigth(context) * 0.10,
                 color: kBackGroundColor,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: Portfolio.portfolios.length,
+                  itemCount: BusinessService.businessServices.length,
                   itemBuilder: (BuildContext context, int index) {
-                    Portfolio portfolio = Portfolio.portfolios[index];
-                    return GestureDetector(
-                      child: Container(
-                        margin: EdgeInsets.all(10.0),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black26,
-                              offset: Offset(0.0, 2.0),
-                              blurRadius: 6.0,
+                    BusinessService service = BusinessService.businessServices[index];
+                    return Container(
+                      margin: EdgeInsets.all(8.0),
+                      child: Stack(
+                        children: <Widget>[
+                          ReusableCard(
+                            cardChild: IconContent(
+                              label: service.title,
                             ),
-                          ],
-                        ),
-                        child: Stack(
-                          children: <Widget>[
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(5.0),
-                              child: Hero(
-                                tag: '${portfolio.id}',
-                                child: Image(
-                                  image: AssetImage(portfolio.imageUrl),
-                                  width: 300.0,
-                                  height: 210.0,
-                                  fit: BoxFit.cover,
+                            onPress: () {
+                              print("Solutions onPress : " + service.webUrl);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => DetailsWebView(
+                                    webURL: service.webUrl,
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ],
-                        ),
+                              );
+                            },
+                          )
+                        ],
                       ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => PortfolioDetailsPage(
-                              portfolio: portfolio,
-                            ),
-                          ),
-                        );
-                      },
                     );
                   },
                 ),
               ),
             ),
-          ),
-          SizedBox(height: 5.0),
-          SideInAnimation(
-            2,
-            child: Subhead(
-              title: 'Our Partners',
-              onTap: () {
-                Navigator.push(context,
-                  MaterialPageRoute(
-                      builder: (context) => SeeGridView(
-                          items: Partner.partners,
-                          sectionName: kSectionName.partners,  title: 'Our Partners',)),
-                );
-              },
+            SizedBox(height: 5.0),
+            SideInAnimation(
+              2,
+              child: Subhead(
+                title: 'Manage Your IT',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeeGridView(
+                            items: MangeIT.mangeITs,
+                            sectionName: kSectionName.its, title:"Manage Your IT",),),
+                  );
+                },
+              ),
             ),
-          ),
-          SizedBox(height: 5.0),
-          Container(
-            height: 100.0,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: Partner.partners.length,
-              itemBuilder: (BuildContext context, int index) {
-                Partner partner = Partner.partners[index];
-                return PartnerCard(
-                  partner: partner,
-                );
-              },
+            SizedBox(height: 5.0),
+            Container(
+              height: 120.0,
+              color: kBackGroundColor,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: MangeIT.mangeITs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  MangeIT manageIT = MangeIT.mangeITs[index];
+                  return ManageItCard(
+                    title: manageIT.title,
+                    imageUrl: manageIT.imageUrl,
+                    webUrl: manageIT.webUrl,
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 5.0),
+            SideInAnimation(
+              2,
+              child: Subhead(
+                title: 'Portfolio',
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SeeGridView(
+                            items: Portfolio.portfolios,
+                            sectionName: kSectionName.portfolios,title: 'Portfolio',)),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 5.0),
+            Row(
+              children: [
+                Expanded(
+                  child: SideInAnimation(
+                    2,
+                    child: Container(
+                      height: 220.0,
+                      color: kBackGroundColor,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: Portfolio.portfolios.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          Portfolio portfolio = Portfolio.portfolios[index];
+                          return GestureDetector(
+                            child: Container(
+                              margin: EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(20.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.black26,
+                                    offset: Offset(0.0, 2.0),
+                                    blurRadius: 6.0,
+                                  ),
+                                ],
+                              ),
+                              child: Stack(
+                                children: <Widget>[
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(5.0),
+                                    child: Hero(
+                                      tag: '${portfolio.id}',
+                                      child: Image(
+                                        image: AssetImage(portfolio.imageUrl),
+                                        width: 300.0,
+                                        height: 210.0,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => PortfolioDetailsPage(
+                                    portfolio: portfolio,
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 5.0),
+            SideInAnimation(
+              2,
+              child: Subhead(
+                title: 'Our Partners',
+                onTap: () {
+                  Navigator.push(context,
+                    MaterialPageRoute(
+                        builder: (context) => SeeGridView(
+                            items: Partner.partners,
+                            sectionName: kSectionName.partners,  title: 'Our Partners',)),
+                  );
+                },
+              ),
+            ),
+            SizedBox(height: 5.0),
+            Container(
+              height: 100.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: Partner.partners.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Partner partner = Partner.partners[index];
+                  return PartnerCard(
+                    partner: partner,
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

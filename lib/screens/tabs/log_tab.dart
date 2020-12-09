@@ -6,21 +6,25 @@ class LogNotificationTab extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Image(
-                image: AssetImage("images/icons/under_contractor.png"),
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image(
+                    image: AssetImage("images/icons/under_contractor.png"),
 
+                  ),
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Center(child: Text("Under Construction")),
+                ],
               ),
-              SizedBox(
-                width: 15,
-              ),
-              Center(child: Text("Under Construction")),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
