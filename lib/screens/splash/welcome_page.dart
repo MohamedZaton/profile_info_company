@@ -1,12 +1,8 @@
 import 'dart:async';
-
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:profileapp/animation_components/fade_animation.dart';
 import 'package:profileapp/constants.dart';
 import 'package:profileapp/screens/home_page.dart';
-import 'package:shimmer/shimmer.dart';
 
 class WelcomePage extends StatefulWidget {
   static String id = "WelcomePage";
@@ -28,9 +24,9 @@ class _WelcomePageState extends State<WelcomePage> {
     Timer(
       Duration(milliseconds: 2000),
       () {
-        Navigator.pushReplacement(
+          Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder:(context) => HomePage()),
         );
       },
     );
@@ -50,17 +46,17 @@ class _WelcomePageState extends State<WelcomePage> {
                 gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    colors: [kStartCyanColor, kEndCyanColor])),
+                    colors: [kStartCyanColor, kEndCyanColor],),
+            ),
           ),
-          FadeInAnimation(
-            2 ,
+          FadeInAnimation(2 ,
             child: Center(
                 child: Container(
-              child: Image(
-                image: AssetImage("images/icons/pclink_logo.png"),
-                width: screenWidth * 0.50,
-                height: screenHeight * 0.50,
-              ),
+                    child: Image(
+                      image: AssetImage("images/icons/pclink_logo.png"),
+                      width: screenWidth * 0.50,
+                      height: screenHeight * 0.50,
+                    ),
             )),
           ),
         ]),
@@ -68,32 +64,3 @@ class _WelcomePageState extends State<WelcomePage> {
     );
   }
 }
-
-/*
-AnimatedSplashScreen(
-            splash: Stack(
-          children: [
-            Container(child: Image( image: AssetImage("images/backgrounds/splash_background.png",),
-              width:screenWidth,
-              height: screenHeight,
-            ) ,
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [kStartCyanColor, kEndCyanColor])),
-            ),
-            Center(child: Container(child: Image(
-              image:AssetImage("images/icons/pclink_logo.png"),
-              width:screenWidth*0.50,
-              height: screenHeight*0.50,
-            ),)),
-          ]
-        ),
-            nextScreen: HomePage(),
-            splashTransition: SplashTransition.fadeTransition,
-            pageTransitionType: PageTransitionType.fade,
-            duration: 1000,
-            animationDuration: Duration(milliseconds: 1500),
-            ),
- */
