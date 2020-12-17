@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:profileapp/constants.dart';
 import 'package:profileapp/models/portfolio.dart';
+import 'package:profileapp/screens/gridpages/gridcards/portfolio_grid_card.dart';
 
 class PortfolioList extends StatelessWidget {
   List<Portfolio> items;
@@ -18,11 +19,27 @@ class PortfolioList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                child:Text(kPortfolioTitle,style: TextStyle(color: kPrimaryColor),)
+                child:Text(kBusinessTitle,style: TextStyle(color: kPrimaryColor),)
             ),
           ],
         ),
 
+      ),
+      body: Container(
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount: items.length,
+
+          itemBuilder: (BuildContext context, int index) {
+
+            return Column(
+              children: [
+                PortfolioGridCard(item: items[index],),
+                SizedBox(height: 10,)
+              ],
+            );
+
+          },),
       ),
 
     );

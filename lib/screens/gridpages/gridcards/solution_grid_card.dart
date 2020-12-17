@@ -17,28 +17,35 @@ class SolutionGridCard extends StatelessWidget {
       child: Container(
         child: Stack(
           children: <Widget>[
-            Container(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(3.0),
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(kStartCyanColor.withOpacity(0.6), BlendMode.modulate),
-                  child: Image(
-                    image: AssetImage(item.imageUrl),
-                    fit: BoxFit.fill,
+            Row(
+              
+              children: [
+                Expanded(
+                  child: Container(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(3.0),
+                      child: ColorFiltered(
+                        colorFilter: ColorFilter.mode(kStartCyanColor.withOpacity(0.6), BlendMode.modulate),
+                        child: Image(
+                          image: AssetImage(item.imageUrl),
+                          fit: BoxFit.fill,
+                        ),
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black26,
+                          offset: Offset(0.0, 2.0),
+                          blurRadius: 6.0,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    offset: Offset(0.0, 2.0),
-                    blurRadius: 6.0,
-                  ),
-                ],
-              ),
+              ],
             ),
             Positioned.fill(
               bottom: 5.0,

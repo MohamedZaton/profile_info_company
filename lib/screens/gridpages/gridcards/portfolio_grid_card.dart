@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:profileapp/components/popup_img_widget.dart';
+import 'package:profileapp/screens/gridpages/subpages/portfolio_detail.dart';
+import 'package:profileapp/utils/screens.dart';
 
 class PortfolioGridCard extends StatelessWidget {
   var item ;
@@ -33,22 +35,30 @@ class PortfolioGridCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.0),
               child: Image(
                 image: AssetImage(item.imageUrl),
-                width: 300.0,
+                width: ScreenMobile.width(context),
                 height: 210.0,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
+            Positioned.fill(
+              bottom: 5.0,
+              left: 5.0,
+              child: Align(
+                alignment: Alignment.bottomLeft,
+                child: Text(item.title,style: TextStyle(color: Colors.white ,fontSize: 12,fontWeight: FontWeight.bold),),
+              ),
+            )
           ],
         ),
       ),
-      onTap: () async {
-        await showDialog(
-            context: context,
-            builder: (_) => ImageDialog(
-              productUrl: item.popImgUrl,
-            ));
-
-        print("image click " + item.popImgUrl);
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => PortfolioDetailsPage(
+               portfolio: item,
+              )),
+        );
       },
     );
   }

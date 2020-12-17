@@ -17,9 +17,17 @@ class _LocationTabState  extends State<LocationTab> {
     target: LatLng(31.216695, 29.945324),
     zoom: 14.4746,
   );
+  var ArrowIconUpDown = Icons.keyboard_arrow_up ;
+  @override
+  void initState() {
+   
+    super.initState();
 
+  }
+  
   @override
   Widget build(BuildContext context) {
+    
     markers.add(Marker(
         markerId: MarkerId('PclinkId'),
         position:LatLng(31.216695, 29.945324),
@@ -36,6 +44,24 @@ class _LocationTabState  extends State<LocationTab> {
         ),
           SlidingUpPanel(
             backdropOpacity: 1.0,
+             onPanelClosed: ()
+            {
+              print("panel close");
+              setState(() {
+                ArrowIconUpDown = Icons.keyboard_arrow_up ;
+
+              });
+
+            },
+            onPanelOpened: ()
+            {
+              print("panel open");
+              setState(() {
+                ArrowIconUpDown = Icons.keyboard_arrow_down ;
+
+              });
+
+            },
              panel: Container(
                margin: EdgeInsets.symmetric(horizontal: 20.0),
                child: Center(
@@ -45,7 +71,7 @@ class _LocationTabState  extends State<LocationTab> {
                        onTap: () {
 
                        },
-                       title: Icon(Icons.keyboard_arrow_up,color: kStartCyanColor,)
+                       title: Icon(ArrowIconUpDown,color: kStartCyanColor,)
 
                      ),  // arrow up
                      ListTile(
@@ -92,29 +118,35 @@ class _LocationTabState  extends State<LocationTab> {
                                .bodyText2
                                .copyWith(fontSize: 14.0)),
                      ),
-                     ListTile(
-                       onTap: () {
-                       },
-                       leading: SizedBox(width: 10,) ,
-                       title:   Divider(color: kStartCyanColor),
+                    Row(children: [
 
-                     ),
-                     ListTile(
-                       onTap: () {
+                      Divider(color: kStartCyanColor),
 
-                       },
-                         leading: SizedBox(width: 1,),
-                       title:  OutlineButton(
-                         child: new Text(" Contact us " ,style: TextStyle(  color: Colors.blue,),),
-                           shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0),),
-                         borderSide: BorderSide(color: Colors.blue),
-                         onPressed: () {  Navigator.push(
-                           context,
-                           MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kContactusLink,)),
-                         );
-                         },
-                       )
-                     ),
+                    ],),
+                     Row(
+
+                       children: [
+                         SizedBox(width: 10,),
+                         Expanded(
+                           child: RaisedButton(
+                             shape: RoundedRectangleBorder(
+                                 borderRadius: BorderRadius.circular(20),
+
+                             ),
+                             color: kStartCyanColor,
+
+                             child:Text(" Contact us " ,style: TextStyle(  color: Colors.white,),),
+
+                             onPressed: () {  Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context) => DetailsWebView(webURL: kContactusLink,)),
+                             );
+                             },
+                           ),
+                         ),
+                         SizedBox(width: 10,),
+                       ],
+                     )
                   ],
                 ),
                ),
@@ -126,3 +158,4 @@ class _LocationTabState  extends State<LocationTab> {
     );
   }
 }
+
