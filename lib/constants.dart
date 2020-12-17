@@ -10,6 +10,10 @@ const kSubHeadColor = Color(0xFF707070);
 const kSeeMoreColor = Color(0xFF757070);
 
 const String kLogoHeroTag = "tag_logo_hero";
+const String kOurPartnersTitle = "Our Partners";
+const String kPortfolioTitle = "Portfolio";
+const String kManageTitle = "Manage Your IT";
+const String kBusinessTitle = "Business Solutions";
 
 const kTitleTextStyle = TextStyle(
   fontSize: 15.0,

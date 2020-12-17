@@ -13,6 +13,10 @@ import 'package:profileapp/models/portfolio.dart';
 import 'package:profileapp/models/service.dart';
 import 'package:profileapp/models/manageit.dart';
 import 'package:profileapp/screens/details/web_view_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/lists/business_list_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/lists/manageit_list_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/lists/partner_list_page.dart';
+import 'package:profileapp/screens/gridpages/subpages/lists/portfolio_list_page.dart';
 import 'package:profileapp/screens/gridpages/subpages/portfolio_detail.dart';
 import 'package:profileapp/screens/gridpages/subpages/see_grid_view_screen.dart';
 import 'package:profileapp/utils/screens.dart';
@@ -43,15 +47,12 @@ class _CompanyState extends State<Company> {
             SideInAnimation(
               2,
               child: Subhead(
-                title: 'Business Solutions',
+                title: kBusinessTitle,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SeeGridView(
-                            title: 'Business Solutions',
-                            items: BusinessService.businessServices,
-                            sectionName: kSectionName.solutions)),
+                        builder: (context) => BusinessList(items: BusinessService.businessServices)),
                   );
                 },
               ),
@@ -98,14 +99,12 @@ class _CompanyState extends State<Company> {
             SideInAnimation(
               2,
               child: Subhead(
-                title: 'Manage Your IT',
+                title: kManageTitle,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SeeGridView(
-                            items: MangeIT.mangeITs,
-                            sectionName: kSectionName.its, title:"Manage Your IT",),),
+                        builder: (context) =>ManageList(items: MangeIT.mangeITs,),),
                   );
                 },
               ),
@@ -131,14 +130,12 @@ class _CompanyState extends State<Company> {
             SideInAnimation(
               2,
               child: Subhead(
-                title: 'Portfolio',
+                title: kPortfolioTitle,
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => SeeGridView(
-                            items: Portfolio.portfolios,
-                            sectionName: kSectionName.portfolios,title: 'Portfolio',)),
+                        builder: (context) => PortfolioList(items: Portfolio.portfolios,)),
                   );
                 },
               ),
@@ -210,13 +207,11 @@ class _CompanyState extends State<Company> {
             SideInAnimation(
               2,
               child: Subhead(
-                title: 'Our Partners',
+                title: kOurPartnersTitle,
                 onTap: () {
                   Navigator.push(context,
                     MaterialPageRoute(
-                        builder: (context) => SeeGridView(
-                            items: Partner.partners,
-                            sectionName: kSectionName.partners,  title: 'Our Partners',)),
+                        builder: (context) =>PartnerList(items: Partner.partners)),
                   );
                 },
               ),

@@ -27,7 +27,6 @@ class SeeGridView extends StatelessWidget {
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Container(
               child:Text('${title}',style: TextStyle(color: kPrimaryColor),)
             ),
@@ -54,7 +53,6 @@ class SeeGridView extends StatelessWidget {
   }
 
   Widget SelectedGridCard(kSectionName sectionName, item, BuildContext context) {
-
     switch (sectionName) {
       case kSectionName.its:
         {
@@ -96,14 +94,14 @@ StaggeredTile staggeredSections(int index ,kSectionName sectionName) {
       break;
     case kSectionName.solutions:
       {
-        print("solutions staggeredSection ");
+        print("solutions staggeredSection");
 
         return  StaggeredTile.fit(index==0 ? 7 : 2);
       }
       break;
     case kSectionName.portfolios:
       {
-        print("portfolios staggeredSection ");
+        print("portfolios staggeredSection");
 
         return StaggeredTile.count(2,2);
       }
