@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "873443783269",
+    "project_id": "profile-pclink-flutter",
+    "storage_bucket": "profile-pclink-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873443783269:android:34ce1a5d2e36fc0ad54c8c",
+        "android_client_info": {
+          "package_name": "com.pclink.dev.profileapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873443783269-3ma8ggvtf8onedrgbh539emn0hf0crml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizp7k74mYcA_Rgzz50nHvOBedtMwk1OU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873443783269-3ma8ggvtf8onedrgbh539emn0hf0crml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

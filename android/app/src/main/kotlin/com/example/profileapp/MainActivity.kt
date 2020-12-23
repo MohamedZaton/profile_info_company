@@ -1,4 +1,4 @@
-package com.example.profileapp
+package com.pclink.dev.profileapp
 
 import io.flutter.embedding.android.FlutterActivity
 
