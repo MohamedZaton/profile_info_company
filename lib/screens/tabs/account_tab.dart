@@ -13,7 +13,7 @@ class _AccountTabState extends State<AccountTab> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: DetailsWebView(
-        webURL: "https://i-attend.pclink.com.eg:8444/Login",
+        webURL: "https://204.15.178.113:8444/Login",
         isAppBar: false,
       ),
     );

@@ -7,6 +7,7 @@ import 'package:profileapp/screens/tabs/account_tab.dart';
 import 'package:profileapp/screens/tabs/company_tab.dart';
 import 'package:profileapp/screens/tabs/contact_tab.dart';
 import 'package:profileapp/screens/tabs/log_tab.dart';
+import 'package:profileapp/services/push_notification_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../constants.dart';
 import 'details/web_view_page.dart';
@@ -27,8 +28,16 @@ class _HomePageState extends State<HomePage> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _scaffoldBodyKey = GlobalKey<ScaffoldState>();
 
+
+  @override
+  void initState() {
+    PushNotificationServices.initialise();
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: _scaffoldKey,
 
