@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
 class LogNotificationTab extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -28,6 +27,7 @@ class FirstRoute extends StatefulWidget {
 class _FirstRouteState extends State<FirstRoute> {
   @override
   void initState() {
+    firebaseInit();
     super.initState();
   }
 
@@ -35,33 +35,42 @@ class _FirstRouteState extends State<FirstRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
 
-        body: FutureBuilder(
-          future: getData(),
-          builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Column(
-                children: [
-                  Container(
-                    height: 27,
-                    child: ListTile(
-                      leading: Text(snapshot.data.data()['title']),
-                     title:Text(snapshot.data.data()['detail']),
-                  ),
-                  )],
-              );
-            } else if (snapshot.connectionState == ConnectionState.none) {
+        body: StreamBuilder<QuerySnapshot>(
+            stream: FirebaseFirestore.instance.collection('messages').snapshots(),
+          builder: (context, snapshot) {
+             List<DocumentSnapshot> messages ;
+             try
+             {
+               messages = snapshot.data.docs;
+
+             }catch(e)
+            {
+
+            }
+            //just add this line
+            if(snapshot.data == null) return CircularProgressIndicator();
+
+            if (snapshot.hasData) {
+            return  ListView(
+                  children: messages
+                      .map((msg) => Card(
+                      child:   ListTile(
+                      title:   Text(msg['title']),
+                      subtitle: Text(msg['detail']),
+                    ),
+                  )).toList());
+
+            } else if (snapshot.connectionState == ConnectionState.none || !snapshot.hasData) {
               return Text("No data");
             }
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           },
         ));
   }
 
-  Future<DocumentSnapshot> getData() async {
+  Future<Stream<QuerySnapshot>> firebaseInit() async  {
+    await WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp();
-    return await FirebaseFirestore.instance
-        .collection("messages")
-        .doc("nQzqnECGqt3RICo4RDRG")
-        .get();
+    return FirebaseFirestore.instance.collection('messages').snapshots();
   }
 }

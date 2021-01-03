@@ -1,8 +1,8 @@
 import UIKit
 import Flutter
 import GoogleMaps
-import Firebase
-
+import FirebaseMessaging
+import FirebaseAnalytics
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
@@ -17,8 +17,8 @@ import Firebase
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
+    
     override func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-
        Messaging.messaging().apnsToken = deviceToken
        super.application(application, didRegisterForRemoteNotificationsWithDeviceToken: deviceToken)
      }
